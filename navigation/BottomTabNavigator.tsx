@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import * as React from "react";
 
-import Colors from "../constants/Colors";
+// import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import ContactScreen from "../screens/Contact";
 import HomeScreen from "../screens/Home";
