@@ -4,13 +4,12 @@ import { Provider } from "react-redux";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import useCachedResources from "./hooks/useCachedResources";
-import useColorScheme from "./hooks/useColorScheme";
 import Navigation from "./navigation";
-import store from './store';
+import store from "./store";
+import AppContext from "./context";
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
-  const colorScheme = useColorScheme();
 
   if (!isLoadingComplete) {
     return null;
@@ -18,10 +17,12 @@ export default function App() {
     return (
       <SafeAreaProvider>
         <Provider store={store}>
-          <>
-            <Navigation colorScheme={colorScheme} />
-            <StatusBar />
-          </>
+          <AppContext>
+            <>
+              <Navigation />
+              <StatusBar />
+            </>
+          </AppContext>
         </Provider>
       </SafeAreaProvider>
     );
