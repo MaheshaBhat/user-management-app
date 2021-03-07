@@ -4,8 +4,8 @@ import {
   Theme
 } from '@react-navigation/native';
 
-const tintColorLight = '#2f95dc';
-const tintColorDark = '#fff';
+const tintColorLight = '#ff7d7b';
+const tintColorDark = '#ff65a4';
 
 
 const light = {
@@ -14,7 +14,8 @@ const light = {
     ...DefaultTheme.colors,
     text: '#000',
     background: '#fff',
-    primaryColor: '#00bfa5',
+    primaryColor: '#ff7d7b',
+    secondaryColor: "#ff65a4",
     tint: tintColorLight,
     tabIconDefault: '#ccc',
     tabIconSelected: tintColorLight,
@@ -26,7 +27,8 @@ const dark = {
     ...DarkTheme.colors,
     text: '#fff',
     background: '#000',
-    primaryColor: '#7fdfd2',
+    primaryColor: '#ff7d7b',
+    secondaryColor: "#ff65a4",
     tint: tintColorDark,
     tabIconDefault: '#ccc',
     tabIconSelected: tintColorDark,

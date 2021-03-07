@@ -1,4 +1,4 @@
-import { ContactUser } from "./types";
+import { User } from "./types";
 
 export const SET_API_STATUS = 'setApiStatus';
 export const SET_DATA = 'setData';
@@ -11,7 +11,7 @@ interface setApiStatusAction {
 
 interface setDataListAction {
     type: typeof SET_DATA,
-    payload: Array<ContactUser>[],
+    payload: Array<User>,
 }
 
 

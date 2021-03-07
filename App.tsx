@@ -1,4 +1,4 @@
-import { StatusBar } from "expo-status-bar";
+/* eslint-disable react/style-prop-object */
 import React from "react";
 import { Provider } from "react-redux";
 import { SafeAreaProvider } from "react-native-safe-area-context";
@@ -7,6 +7,7 @@ import useCachedResources from "./hooks/useCachedResources";
 import Navigation from "./navigation";
 import store from "./store";
 import AppContext from "./context";
+import AppStatusBar from "./components/StatusBar";
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -20,7 +21,7 @@ export default function App() {
           <AppContext>
             <>
               <Navigation />
-              <StatusBar />
+              <AppStatusBar />
             </>
           </AppContext>
         </Provider>

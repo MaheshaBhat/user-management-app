@@ -5,7 +5,9 @@ import { SystemState } from './types';
 
 const initialState: SystemState = {
   apiStatus: statusCodes.notUsed,
-  userData: []
+  userData: [],
+  currentUserName: "Mark Henry",
+  currentUserData: []
 };
 
 
@@ -21,9 +23,16 @@ export function productReducer(state = initialState, action: ActionTypes): Syste
     }
     case SET_DATA: {
       const data = action.payload;
+      let cData = data.filter(v => v.userName === state.currentUserName);
+      if (cData.length) {
+        cData = cData[0].contacts;
+      } else {
+        cData = [];
+      }
       return {
         ...state,
-        userData: [...data]
+        userData: [...data],
+        currentUserData: cData
       };
     }
 

@@ -3,15 +3,12 @@ export interface User {
   userName: string;
   id: string;
   contactNo: Number;
+  contacts: Array<User>
 }
 
-export interface ContactUser {
-  [email: string]: Array<User>[];
-
-}
 export interface SystemState {
   apiStatus: number;
-  userData: Array<ContactUser>[];
-
-}
+  userData: Array<User>;
+  currentUserName: string;
+  currentUserData: Array<User>}
 

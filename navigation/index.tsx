@@ -1,9 +1,11 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import React, { useContext } from "react";
-import { AppContext, contextType } from "../context";
+import React, { useContext, useEffect } from "react";
+import { useDispatch } from "react-redux";
 
+import { AppContext, contextType } from "../context";
 import NotFoundScreen from "../screens/NotFoundScreen";
+import { setDataList } from "../store/actions";
 import { RootStackParamList } from "../types";
 import BottomTabNavigator from "./BottomTabNavigator";
 import LinkingConfiguration from "./LinkingConfiguration";
@@ -12,6 +14,13 @@ import LinkingConfiguration from "./LinkingConfiguration";
 // "Fundamentals" guide: https://reactnavigation.org/docs/getting-started
 export default function Navigation() {
   const { theme } = useContext<contextType>(AppContext);
+  const dispatch = useDispatch();
+
+  // load the dummy data
+  useEffect(() => {
+    dispatch(setDataList(require("../assets/data/dummy.json")));
+  }, [dispatch]);
+
   return (
     <NavigationContainer linking={LinkingConfiguration} theme={theme}>
       <RootNavigator />

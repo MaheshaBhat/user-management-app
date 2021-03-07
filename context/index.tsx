@@ -2,10 +2,10 @@ import React, { useState, ReactChild, createContext } from 'react';
 import { Theme } from '@react-navigation/native';
 
 import useColorScheme from '../hooks/useColorScheme';
-import Colors from '../constants/Colors';
+import Colors, { colorType } from '../constants/Colors';
 
 export type contextType = {
-  theme: Theme;
+  theme: colorType;
   setThemeType: Function;
 
 };
