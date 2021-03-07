@@ -90,7 +90,16 @@ function FormContent({ type, setPopup, selectedUsers }: any) {
     }
     // await storeData("@usrData", JSON.stringify([...userData]));
     setPopup(false);
-  }, [dispatch, formData.email, formData.fName, formData.id, formData.lName, formData.number, setPopup, type]);
+  }, [
+    dispatch,
+    formData.email,
+    formData.fName,
+    formData.id,
+    formData.lName,
+    formData.number,
+    setPopup,
+    type,
+  ]);
 
   return (
     <>
@@ -121,7 +130,7 @@ function FormContent({ type, setPopup, selectedUsers }: any) {
       <Button
         onPress={changeUserContent}
         title={type === SelectionType.ADD ? "Add TO Contact" : "Modify Contact"}
-        color={theme.colors.text}
+        color={theme.colors.secondaryColor}
       />
       <Text style={{ color: "red" }}>{error}</Text>
     </>

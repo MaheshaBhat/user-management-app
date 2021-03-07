@@ -23,10 +23,11 @@ function EditBox({
     >
       <TextInput
         placeholder={placeholder}
-        style={styles.textInputContainer}
+        style={[styles.textInputContainer, { color: theme.colors.text}]}
         onChangeText={onChangeText}
         keyboardType={keyboardType}
         value={value}
+        placeholderTextColor={theme.colors.text}
       />
       {!!icon && <Ionicons color={theme.colors.border} size={20} name={icon} />}
     </View>
