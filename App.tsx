@@ -1,4 +1,3 @@
-/* eslint-disable react/style-prop-object */
 import React from "react";
 import { Provider } from "react-redux";
 import { SafeAreaProvider } from "react-native-safe-area-context";

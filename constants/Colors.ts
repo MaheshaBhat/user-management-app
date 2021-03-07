@@ -17,6 +17,7 @@ const light = {
     primaryColor: '#ff7d7b',
     secondaryColor: "#ff65a4",
     tint: tintColorLight,
+    border: '#edebec',
     tabIconDefault: '#ccc',
     tabIconSelected: tintColorLight,
   }
@@ -29,6 +30,7 @@ const dark = {
     background: '#000',
     primaryColor: '#ff7d7b',
     secondaryColor: "#ff65a4",
+    border: '#edebec',
     tint: tintColorDark,
     tabIconDefault: '#ccc',
     tabIconSelected: tintColorDark,

@@ -26,7 +26,10 @@ export default function BottomTabNavigator() {
   return (
     <BottomTab.Navigator
       initialRouteName="Contact"
-      tabBarOptions={{ activeTintColor: theme.colors.tint }}
+      tabBarOptions={{
+        activeTintColor: theme.colors.tint,
+        inactiveTintColor: theme.colors.border,
+      }}
     >
       <BottomTab.Screen
         name="Contact"
