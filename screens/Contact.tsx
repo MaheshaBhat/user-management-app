@@ -33,7 +33,6 @@ enum SelectionType {
 }
 export default function Contact() {
   const { theme } = useContext<contextType>(AppContext);
-  // const userData = useSelector(getUser);
   const [isEditNeeded, enableEdit] = useState(false);
   const [isPopup, setPopup] = useState(false);
   const [type, setType] = useState(-1);
@@ -46,7 +45,7 @@ export default function Contact() {
   useEffect(() => {
     (async () => {
       const data = await getData("@usrData");
-      if (!data || data?.length) {
+      if (!data) {
         const value = require("../assets/data/dummy.json");
         dispatch(setDataList(value));
         await storeData("@usrData", JSON.stringify(value));
@@ -60,7 +59,6 @@ export default function Contact() {
     dispatch(deleteUser(selectedUserListRef.current));
     selectedUserListRef.current = [];
     enableEdit(false);
-    // await storeData("@usrData", JSON.stringify([...userData]));
   }, [dispatch]);
 
   const setSelected = useCallback((arr: Array<string>) => {

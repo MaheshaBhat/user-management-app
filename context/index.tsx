@@ -6,19 +6,20 @@ import React, {
   useCallback,
 } from "react";
 import { AppState, AppStateStatus } from "react-native";
+import { useSelector } from "react-redux";
 
 import useColorScheme from "../hooks/useColorScheme";
 import Colors, { colorType } from "../constants/Colors";
+import { storeData } from "../constants/helper";
+import { getUser } from "../store/getters";
 
 export type contextType = {
   theme: colorType;
   setThemeType: Function;
-  appState: AppStateStatus;
 };
 export const AppContext = createContext<contextType>({
   theme: Colors.light,
   setThemeType: () => {},
-  appState: AppState.currentState
 });
 
 interface Props {
@@ -27,16 +28,15 @@ interface Props {
 export default (props: Props) => {
   const [themeType, setThemeType] = useState("light");
   const { children } = props;
-  const [appState, setAppState] = useState(AppState.currentState);
+  const allUsers = useSelector(getUser);
 
   const handleAppStateChange = useCallback(
-    (nextAppState: any) => {
-      if (appState.match(/inactive|background/) && nextAppState === "active") {
-        // console.log("App has come to the foreground!");
+    async (nextAppState: AppStateStatus) => {
+      if (nextAppState === "background") {
+        await storeData("@usrData", JSON.stringify(allUsers));
       }
-      setAppState(nextAppState);
     },
-    [appState]
+    [allUsers]
   );
 
   useEffect(() => {
@@ -49,7 +49,6 @@ export default (props: Props) => {
       value={{
         theme: themeType === "dark" ? Colors.dark : Colors.light,
         setThemeType,
-        appState,
       }}
     >
       {children}

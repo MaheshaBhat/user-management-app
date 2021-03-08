@@ -10,11 +10,11 @@ import { View, Text } from "../Themed";
 import Dropdown, { DropDownContent } from "../Dropdown";
 import { getCurrentUserName, getUser } from "../../store/getters";
 import { setCurrentUser } from "../../store/actions";
-import { storeData } from "../../constants/helper";
-import { AppContext, contextType } from "../../context";
+// import { storeData } from "../../constants/helper";
+// import { AppContext, contextType } from "../../context";
 
 export default function ContactHeader(props: StackHeaderProps) {
-  const { appState } = useContext<contextType>(AppContext);
+  // const { appState } = useContext<contextType>(AppContext);
   const [position, setPosition] = useState({});
   const [isDropdown, showDropdown] = useState(false);
   const curUserName = useSelector(getCurrentUserName);
@@ -31,13 +31,13 @@ export default function ContactHeader(props: StackHeaderProps) {
     [dispatch, selectedItem]
   );
 
-  useEffect(() => {
-    (async () => {
-      if (appState === "background") {
-        await storeData("@usrData", JSON.stringify(allUsers));
-      }
-    })();
-  }, [allUsers, appState]);
+  // useEffect(() => {
+  //   (async () => {
+  //     if (appState === "background") {
+  //       await storeData("@usrData", JSON.stringify(allUsers));
+  //     }
+  //   })();
+  // }, [allUsers, appState]);
 
   return (
     <SafeAreaView>
