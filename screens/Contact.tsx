@@ -46,7 +46,7 @@ export default function Contact() {
   useEffect(() => {
     (async () => {
       const data = await getData("@usrData");
-      if (!data && data?.length) {
+      if (!data || data?.length) {
         const value = require("../assets/data/dummy.json");
         dispatch(setDataList(value));
         await storeData("@usrData", JSON.stringify(value));

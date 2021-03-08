@@ -56,12 +56,24 @@ function FormContent({ type, setPopup, selectedUsers }: any) {
 
   const changeUserContent = useCallback(async () => {
     if (
-      (formData.number === "" || formData.email === "" || formData.fName === "",
-      formData.lName === "")
+      formData.number === "" ||
+      formData.email === "" ||
+      formData.fName === "" ||
+      formData.lName === ""
     ) {
       setError("Please enter all fields");
       return;
+    } else if (SelectionType.ADD === type) {
+      const ind = currentUserData.findIndex(
+        (usr) =>
+          usr.contactNo === formData.number || usr.email === formData.email
+      );
+      if (ind !== -1) {
+        setError("Email or Phone number already exist");
+        return;
+      }
     }
+    setError("");
     switch (type) {
       case SelectionType.ADD:
         dispatch(
@@ -88,18 +100,8 @@ function FormContent({ type, setPopup, selectedUsers }: any) {
       default:
         break;
     }
-    // await storeData("@usrData", JSON.stringify([...userData]));
     setPopup(false);
-  }, [
-    dispatch,
-    formData.email,
-    formData.fName,
-    formData.id,
-    formData.lName,
-    formData.number,
-    setPopup,
-    type,
-  ]);
+  }, [currentUserData, dispatch, formData, setPopup, type]);
 
   return (
     <>
@@ -129,7 +131,7 @@ function FormContent({ type, setPopup, selectedUsers }: any) {
       />
       <Button
         onPress={changeUserContent}
-        title={type === SelectionType.ADD ? "Add TO Contact" : "Modify Contact"}
+        title={type === SelectionType.ADD ? "ADD TO CONTACT" : "MODIFY CONTACT"}
         color={theme.colors.secondaryColor}
       />
       <Text style={{ color: "red" }}>{error}</Text>
